@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Helixis Labs — Industrial Intelligence, Engineered</title>
+<meta name="description" content="Helixis Labs connects the physical and digital layers of industrial operations — devices, firmware, connectivity, automation, ERP and analytics — into one intelligent system." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%232A52E4'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23D31C78'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-surface text-ink font-sans antialiased">
+
+<!-- Logo sprite (reused via <use>) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="0.15">
+      <stop offset="0" stop-color="#2A52E4"/>
+      <stop offset="1" stop-color="#653DB2"/>
+    </linearGradient>
+  </defs>
+  <symbol id="logo-mark" viewBox="0 0 272 66">
+    <text x="0" y="52" font-family="'Baloo 2', sans-serif" font-weight="700" font-size="48" letter-spacing="-1" fill="url(#logoGrad)">Helixis</text>
+    <text x="158" y="52" font-family="'Baloo 2', sans-serif" font-weight="700" font-size="48" letter-spacing="-1" fill="#D31C78">l@bs</text>
+    <circle cx="74" cy="10" r="9.5" fill="#2A52E4"/>
+    <circle cx="74" cy="10" r="4.2" fill="#D31C78"/>
+  </symbol>
+</svg>
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 bg-white/80 backdrop-blur-xl border-b border-transparent">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div id="nav-inner" class="flex items-center justify-between transition-all duration-500 py-5">
+      <a href="#home" class="flex items-center shrink-0" aria-label="Helixis Labs home">
+        <svg class="h-6 md:h-7 w-auto" viewBox="0 0 272 66" role="img" aria-label="Helixis Labs"><use href="#logo-mark"/></svg>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9" aria-label="Primary">
+        <a href="#home" class="nav-link text-[13.5px] text-ink-soft hover:text-ink transition-colors">Home</a>
+        <a href="#about" class="nav-link text-[13.5px] text-ink-soft hover:text-ink transition-colors">About</a>
+        <a href="#solutions" class="nav-link text-[13.5px] text-ink-soft hover:text-ink transition-colors">Solutions</a>
+        <a href="#industries" class="nav-link text-[13.5px] text-ink-soft hover:text-ink transition-colors">Industries</a>
+        <a href="#use-cases" class="nav-link text-[13.5px] text-ink-soft hover:text-ink transition-colors">Use Cases</a>
+        <a href="#platform" class="nav-link text-[13.5px] text-ink-soft hover:text-ink transition-colors">Platform</a>
+        <a href="#resources" class="nav-link text-[13.5px] text-ink-soft hover:text-ink transition-colors">Resources</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="hidden lg:inline-flex items-center rounded-full bg-brand-gradient text-white text-[13.5px] font-medium px-5 py-2.5 transition-all duration-300 hover:shadow-[0_8px_24px_-8px_rgba(42,82,228,0.5)] hover:-translate-y-px">
+          Get in touch
+        </a>
+        <button id="menu-btn" class="menu-btn lg:hidden -mr-2" aria-label="Open menu" aria-expanded="false">
+          <span class="menu-btn-bar bar1"></span>
+          <span class="menu-btn-bar bar2"></span>
+          <span class="menu-btn-bar bar3"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-line bg-white/95 backdrop-blur-xl">
+    <nav class="flex flex-col px-6 py-4" aria-label="Mobile">
+      <a href="#home" class="mob-link py-3 text-[15px] text-ink border-b border-line/70">Home</a>
+      <a href="#about" class="mob-link py-3 text-[15px] text-ink border-b border-line/70">About</a>
+      <a href="#solutions" class="mob-link py-3 text-[15px] text-ink border-b border-line/70">Solutions</a>
+      <a href="#industries" class="mob-link py-3 text-[15px] text-ink border-b border-line/70">Industries</a>
+      <a href="#use-cases" class="mob-link py-3 text-[15px] text-ink border-b border-line/70">Use Cases</a>
+      <a href="#platform" class="mob-link py-3 text-[15px] text-ink border-b border-line/70">Platform</a>
+      <a href="#resources" class="mob-link py-3 text-[15px] text-ink border-b border-line/70">Resources</a>
+      <a href="#contact" class="mob-link py-3 text-[15px] text-ink">Contact</a>
+      <a href="#contact" class="mt-3 inline-flex items-center justify-center rounded-full bg-brand-gradient text-white text-[14px] font-medium px-5 py-3">Get in touch</a>
+    </nav>
+  </div>
+</header>
+<div id="mobile-backdrop" class="lg:hidden hidden"></div>
+
+<main>
+<!--HERO-->
+<section id="home" class="relative overflow-hidden pt-40 pb-24 md:pt-48 md:pb-32">
+  <div class="pointer-events-none absolute -top-40 -right-40 h-[560px] w-[560px] rounded-full bg-brand-gradient opacity-[0.07] blur-3xl"></div>
+  <div class="pointer-events-none absolute top-96 -left-52 h-[420px] w-[420px] rounded-full bg-brand-gradient opacity-[0.05] blur-3xl"></div>
+
+  <div class="max-w-container mx-auto px-6 lg:px-8 relative">
+    <div class="hero-fade grid lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+      <div class="reveal">
+        <p class="eyebrow mb-6">AI &amp; ML-Driven Industrial Intelligence</p>
+        <h1 class="font-light text-[44px] sm:text-[56px] md:text-[68px] lg:text-[80px] leading-[1.04] tracking-tightest text-ink">
+          Where machines
+          <span class="block">meet decisions.</span>
+        </h1>
+        <p class="mt-7 max-w-lg text-[17px] leading-relaxed text-ink-soft">
+          Helixis Labs connects the physical and digital layers of your operations — devices, firmware, connectivity, automation, ERP and analytics — into one continuous system of intelligence.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="#platform" class="btn-primary">
+            Explore the Platform
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <button id="watch-film-btn" class="btn-secondary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch the film
+          </button>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2 flex flex-col items-center">
+        <svg id="rings-svg" viewBox="0 0 520 520" class="w-full max-w-[440px] h-auto" role="img" aria-label="Concentric diagram showing devices, firmware, connectivity, automation, ERP and analytics">
+          <circle cx="260" cy="260" r="60"  fill="none" stroke="#2A52E4" stroke-opacity="0.28" stroke-width="1.25"/>
+          <circle cx="260" cy="260" r="96"  fill="none" stroke="#4848CB" stroke-opacity="0.26" stroke-width="1.25"/>
+          <circle cx="260" cy="260" r="132" fill="none" stroke="#653DB2" stroke-opacity="0.24" stroke-width="1.25"/>
+          <circle cx="260" cy="260" r="168" fill="none" stroke="#873299" stroke-opacity="0.22" stroke-width="1.25"/>
+          <circle cx="260" cy="260" r="204" fill="none" stroke="#AD278A" stroke-opacity="0.20" stroke-width="1.25"/>
+          <circle cx="260" cy="260" r="238" fill="none" stroke="#D31C78" stroke-opacity="0.18" stroke-width="1.25"/>
+
+          <g class="orbit orbit-1"><circle cx="320" cy="260" r="5" fill="#2A52E4"/></g>
+          <g class="orbit orbit-2 orbit-rev"><circle cx="356" cy="260" r="4.5" fill="#4848CB"/></g>
+          <g class="orbit orbit-3"><circle cx="392" cy="260" r="4.5" fill="#653DB2"/></g>
+          <g class="orbit orbit-4 orbit-rev"><circle cx="428" cy="260" r="4" fill="#873299"/></g>
+          <g class="orbit orbit-5"><circle cx="464" cy="260" r="4" fill="#AD278A"/></g>
+          <g class="orbit orbit-6 orbit-rev"><circle cx="498" cy="260" r="3.5" fill="#D31C78"/></g>
+
+          <circle id="core-pulse" cx="260" cy="260" r="22" fill="url(#coreGrad)" opacity="0.16"/>
+          <circle cx="260" cy="260" r="13" fill="url(#coreGrad)"/>
+          <defs>
+            <linearGradient id="coreGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2A52E4"/>
+              <stop offset="0.55" stop-color="#7438A6"/>
+              <stop offset="1" stop-color="#D31C78"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <div class="mt-8 flex flex-wrap justify-center gap-x-5 gap-y-2.5 max-w-[440px]">
+          <span class="inline-flex items-center gap-1.5 text-[12.5px] text-ink-soft"><i class="h-[7px] w-[7px] rounded-full" style="background:#2A52E4"></i>Devices</span>
+          <span class="inline-flex items-center gap-1.5 text-[12.5px] text-ink-soft"><i class="h-[7px] w-[7px] rounded-full" style="background:#4848CB"></i>Firmware</span>
+          <span class="inline-flex items-center gap-1.5 text-[12.5px] text-ink-soft"><i class="h-[7px] w-[7px] rounded-full" style="background:#653DB2"></i>Connectivity</span>
+          <span class="inline-flex items-center gap-1.5 text-[12.5px] text-ink-soft"><i class="h-[7px] w-[7px] rounded-full" style="background:#873299"></i>Automation</span>
+          <span class="inline-flex items-center gap-1.5 text-[12.5px] text-ink-soft"><i class="h-[7px] w-[7px] rounded-full" style="background:#AD278A"></i>ERP</span>
+          <span class="inline-flex items-center gap-1.5 text-[12.5px] text-ink-soft"><i class="h-[7px] w-[7px] rounded-full" style="background:#D31C78"></i>Analytics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Watch the film modal -->
+<div id="film-modal" class="hidden fixed inset-0 z-[60] items-center justify-center bg-ink/60 backdrop-blur-sm px-6">
+  <div class="relative w-full max-w-2xl rounded-[22px] bg-white p-3 shadow-2xl">
+    <button id="film-close" aria-label="Close video" class="absolute -top-11 right-0 text-white/80 hover:text-white">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+    <div class="aspect-video rounded-2xl bg-brand-gradient flex flex-col items-center justify-center text-white text-center px-8">
+      <div class="h-14 w-14 rounded-full bg-white/20 flex items-center justify-center mb-4">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <p class="font-medium text-lg">Product film coming soon</p>
+      <p class="text-white/80 text-sm mt-1 max-w-xs">This space is reserved for the Helixis Labs introduction film.</p>
+    </div>
+  </div>
+</div>
+<!--/HERO-->
+<!--OPPORTUNITY-->
+<section class="py-24 md:py-32 border-t border-line overflow-hidden">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+      <div class="reveal">
+        <p class="eyebrow mb-6">The Opportunity</p>
+        <h2 class="font-light text-[32px] md:text-[38px] leading-[1.15] tracking-tighter2 text-ink">
+          Growth built on visibility, not guesswork.
+        </h2>
+        <p class="mt-7 text-[17px] leading-relaxed text-ink-soft">
+          Indian SMEs are better served by continuously monitoring and adapting their operations than by relying on capacity or market reach alone. Helixis applies AI, machine learning and agentic technology to connect outdated machines and fragmented workflows — automating anomaly detection, predicting maintenance and optimizing workflows as they happen.
+        </p>
+        <p class="mt-5 text-[17px] leading-relaxed text-ink-soft">
+          Intelligent agents read the data and recommend the next action, turning legacy systems into adaptive operations built for growth.
+        </p>
+
+        <div class="mt-10 space-y-5 max-w-sm">
+          <div>
+            <div class="flex items-baseline justify-between mb-2">
+              <span class="text-[13px] text-ink-soft">Downtime avoided</span>
+              <span class="text-[13px] font-medium text-ink">Predictive alerts</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" style="--fill:82%"></div></div>
+          </div>
+          <div>
+            <div class="flex items-baseline justify-between mb-2">
+              <span class="text-[13px] text-ink-soft">Data visibility</span>
+              <span class="text-[13px] font-medium text-ink">Floor to ERP</span>
+            </div>
+            <div class="stat-bar-track"><div class="stat-bar-fill" style="--fill:91%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-2 relative">
+        <div class="img-frame aspect-[4/3] shadow-card">
+          <img src="assets/images/opportunity-dashboard.jpg" alt="Engineer analyzing live production data across multiple monitors on an industrial floor" class="object-cover object-center" loading="lazy" decoding="async" style="object-position:50% 20%" data-parallax data-parallax-strength="0.06" />
+        </div>
+        <div class="pointer-events-none absolute -bottom-6 -left-6 h-32 w-32 rounded-full bg-brand-gradient opacity-[0.18] blur-2xl"></div>
+        <div class="absolute bottom-5 left-5 right-5 sm:right-auto sm:w-auto rounded-2xl bg-white/90 backdrop-blur-md border border-line px-5 py-4 shadow-card">
+          <p class="text-[12px] uppercase tracking-[0.06em] text-ink-faint font-medium">Live on the floor</p>
+          <p class="mt-1 text-[14.5px] text-ink font-medium">Anomalies flagged in real time</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/OPPORTUNITY-->
+<!--ENABLE-->
+<section class="stack-section relative bg-surface-alt pt-24 pb-16 md:pt-32 md:pb-24 border-t border-line">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="pointer-events-none absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full bg-brand-gradient opacity-[0.07] blur-3xl"></div>
+    <div class="pointer-events-none absolute bottom-0 -left-32 h-[360px] w-[360px] rounded-full bg-brand-gradient opacity-[0.06] blur-3xl"></div>
+  </div>
+  <div class="max-w-container mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-xl reveal">
+      <p class="eyebrow mb-6">What We Enable</p>
+      <h2 class="font-light text-[32px] md:text-[38px] lg:text-[46px] leading-[1.15] tracking-tighter2 text-ink">
+        Five layers.<br />One intelligent system.
+      </h2>
+      <p class="mt-6 text-[16px] leading-relaxed text-ink-soft max-w-md">Scroll to move through the stack — each layer sits on the one before it, the way it does on your floor.</p>
+    </div>
+  </div>
+
+  <div class="stack-cards mt-16 md:mt-20 max-w-container mx-auto px-6 lg:px-8">
+
+    <div class="stack-card" style="--stack-i:0">
+      <div class="stack-card-inner" style="background:linear-gradient(135deg,#2A52E4,#3d4fd6)">
+        <svg class="stack-card-decor" width="170" height="170" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7"><rect x="4" y="4" width="16" height="4" rx="1.3"/><rect x="4" y="10" width="16" height="4" rx="1.3"/><rect x="4" y="16" width="16" height="4" rx="1.3"/></svg>
+        <div class="stack-card-content">
+          <span class="stack-card-num">01 / 05</span>
+          <h3>ERP Platforms</h3>
+          <p>A structured foundation for manufacturing, procurement, warehouse, sales, finance and customer processes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-card" style="--stack-i:1">
+      <div class="stack-card-inner" style="background:linear-gradient(135deg,#4B47C4,#5E3FAE)">
+        <svg class="stack-card-decor" width="170" height="170" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7"><circle cx="12" cy="18" r="1.4" fill="currentColor" stroke="none"/><path d="M8.5 14.5a5 5 0 0 1 7 0"/><path d="M5.5 11.5a9 9 0 0 1 13 0"/></svg>
+        <div class="stack-card-content">
+          <span class="stack-card-num">02 / 05</span>
+          <h3>Industrial IoT &amp; Connectivity</h3>
+          <p>Real-time visibility from machines, assets and production environments.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-card" style="--stack-i:2">
+      <div class="stack-card-inner" style="background:linear-gradient(135deg,#7438A6,#8B3399)">
+        <svg class="stack-card-decor" width="170" height="170" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7"><path d="M4 12a8 8 0 0 1 14-5"/><path d="M20 12a8 8 0 0 1-14 5"/><path d="M18 4v4h-4"/><path d="M6 20v-4h4"/></svg>
+        <div class="stack-card-content">
+          <span class="stack-card-num">03 / 05</span>
+          <h3>Process Automation</h3>
+          <p>Faster operational response through alerts, workflows, escalations and system-led actions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-card" style="--stack-i:3">
+      <div class="stack-card-inner" style="background:linear-gradient(135deg,#A22993,#BB2385)">
+        <svg class="stack-card-decor" width="170" height="170" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7"><rect x="7" y="7" width="10" height="10" rx="1.4"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg>
+        <div class="stack-card-content">
+          <span class="stack-card-num">04 / 05</span>
+          <h3>Device &amp; Embedded Engineering</h3>
+          <p>Custom hardware and firmware capability for monitoring, control and field-level intelligence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stack-card" style="--stack-i:4">
+      <div class="stack-card-inner" style="background:linear-gradient(135deg,#C31F7F,#D31C78)">
+        <svg class="stack-card-decor" width="170" height="170" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.7"><path d="M5 19V11"/><path d="M12 19V7"/><path d="M19 19v-5"/><path d="M3 19h18"/></svg>
+        <div class="stack-card-content">
+          <span class="stack-card-num">05 / 05</span>
+          <h3>Analytics &amp; Intelligence Enablement</h3>
+          <p>Decision-ready dashboards and insights built on contextualized operational data.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!--/ENABLE-->
+<!--CTASTRIP-->
+<section class="relative overflow-hidden bg-ink">
+  <img src="assets/images/cta-texture.jpg" alt="" aria-hidden="true" class="cta-photo" loading="lazy" decoding="async" />
+  <div class="pointer-events-none absolute inset-0 bg-ink/60"></div>
+  <div class="pointer-events-none absolute inset-0 opacity-[0.22] bg-brand-gradient"></div>
+  <div class="max-w-container mx-auto px-6 lg:px-8 py-20 md:py-24 relative">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+      <h2 class="reveal font-light text-[26px] md:text-[32px] leading-[1.3] tracking-tighter2 text-white max-w-2xl">
+        From device hardware to ERP and analytics, Helixis helps businesses build intelligence where it matters most.
+      </h2>
+      <a href="#contact" class="reveal reveal-delay-1 shrink-0 inline-flex items-center justify-center gap-2 rounded-full bg-white text-ink px-7 py-3.5 text-[15px] font-medium transition-all duration-300 hover:-translate-y-px hover:shadow-[0_10px_30px_-8px_rgba(255,255,255,0.35)]">
+        Start a conversation
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+<!--/CTASTRIP-->
+<!--ABOUT-->
+<section id="about" class="about-cinematic relative scroll-mt-24">
+  <div class="grid lg:grid-cols-2">
+
+    <div class="about-cinematic-media reveal">
+      <img src="assets/images/about-factory.jpg" alt="Automated robotic arm on a modern manufacturing line" loading="lazy" decoding="async" data-parallax />
+      <div class="about-cinematic-scrim"></div>
+      <div class="about-cinematic-stat">
+        <p class="text-[12.5px] font-medium tracking-[0.06em] uppercase text-white/60">Why Helixis</p>
+        <div class="flex items-end gap-1.5 mt-3">
+          <span class="counter font-light text-[64px] md:text-[84px] leading-none tracking-tightest text-white" data-target="15">0</span>
+          <span class="font-light text-[64px] md:text-[84px] leading-none tracking-tightest text-white">+</span>
+        </div>
+        <p class="mt-3 text-[15px] text-white/70 max-w-[280px]">years in enterprise &amp; ERP transformation — real production lines, not a demo.</p>
+      </div>
+    </div>
+
+    <div class="about-cinematic-copy reveal reveal-delay-1">
+      <div class="max-w-lg">
+        <p class="eyebrow mb-6">About Helixis</p>
+        <h2 class="font-light text-[32px] md:text-[38px] lg:text-[44px] leading-[1.15] tracking-tighter2 text-ink">
+          Built for real-world industry.
+        </h2>
+        <p class="mt-6 text-[17px] leading-relaxed text-ink-soft">
+          Our solutions are built for real industrial businesses — the legacy machines and manual processes already running your floor — enabling transformation that's practical, not theoretical.
+        </p>
+        <p class="mt-5 text-[17px] leading-relaxed text-ink-soft">
+          We design and deliver systems for battery, polymer and electrical-switch manufacturers today, with active expansion into durables, electronics, electricals and home automation. We combine deep process understanding with technology expertise to deliver practical, AI- and ML-driven operational intelligence across the full stack — from the factory floor to the boardroom.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-2.5">
+          <span class="rounded-full border border-line px-4 py-2 text-[13px] text-ink-soft">Battery</span>
+          <span class="rounded-full border border-line px-4 py-2 text-[13px] text-ink-soft">Polymer</span>
+          <span class="rounded-full border border-line px-4 py-2 text-[13px] text-ink-soft">Electrical Switches</span>
+          <span class="rounded-full border border-dashed border-line px-4 py-2 text-[13px] text-ink-faint">+ Durables · Electronics · Electricals · Home Automation</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!--/ABOUT-->
+<!--SOLUTIONS-->
+<section id="solutions" class="py-24 md:py-32 bg-surface-alt border-t border-line scroll-mt-24">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="max-w-xl reveal">
+      <p class="eyebrow mb-6">Solutions</p>
+      <h2 class="font-light text-[32px] md:text-[38px] leading-[1.15] tracking-tighter2 text-ink">
+        Six disciplines, engineered to work as one.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="card reveal">
+        <div class="h-11 w-11 rounded-xl bg-brand-gradient-soft flex items-center justify-center text-brand-blue">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.4"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg>
+        </div>
+        <h3 class="mt-6 text-[17px] font-medium text-ink">Device &amp; Embedded Engineering</h3>
+        <p class="mt-1.5 text-[13.5px] text-ink-faint">Everything at the physical layer</p>
+        <ul class="mt-5 space-y-2.5">
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Hardware design &amp; integration</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Sensor &amp; device development</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Firmware development</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-delay-1">
+        <div class="h-11 w-11 rounded-xl bg-brand-gradient-soft flex items-center justify-center text-brand-violet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="18" r="1.4" fill="currentColor" stroke="none"/><path d="M8.5 14.5a5 5 0 0 1 7 0"/><path d="M5.5 11.5a9 9 0 0 1 13 0"/></svg>
+        </div>
+        <h3 class="mt-6 text-[17px] font-medium text-ink">Industrial IoT &amp; Connectivity</h3>
+        <p class="mt-1.5 text-[13.5px] text-ink-faint">Getting every machine talking</p>
+        <ul class="mt-5 space-y-2.5">
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Gateways, protocols &amp; device connectivity</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Edge data capture</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-delay-2">
+        <div class="h-11 w-11 rounded-xl bg-brand-gradient-soft flex items-center justify-center text-brand-violet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5"/><path d="M20 12a8 8 0 0 1-14 5"/><path d="M18 4v4h-4"/><path d="M6 20v-4h4"/></svg>
+        </div>
+        <h3 class="mt-6 text-[17px] font-medium text-ink">Integration &amp; Orchestration</h3>
+        <p class="mt-1.5 text-[13.5px] text-ink-faint">Your automation engine layer</p>
+        <ul class="mt-5 space-y-2.5">
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Workflow design &amp; automation</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>System integrations — device ↔ ERP ↔ apps</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Event-driven architecture</li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <div class="h-11 w-11 rounded-xl bg-brand-gradient-soft flex items-center justify-center text-brand-magenta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="4" rx="1.3"/><rect x="4" y="10" width="16" height="4" rx="1.3"/><rect x="4" y="16" width="16" height="4" rx="1.3"/></svg>
+        </div>
+        <h3 class="mt-6 text-[17px] font-medium text-ink">Enterprise Systems</h3>
+        <p class="mt-1.5 text-[13.5px] text-ink-faint">Business system backbone</p>
+        <ul class="mt-5 space-y-2.5">
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>ERP implementation &amp; customization</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Module development — procurement, inventory &amp; more</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Business process digitization</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-delay-1">
+        <div class="h-11 w-11 rounded-xl bg-brand-gradient-soft flex items-center justify-center text-brand-magenta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V11"/><path d="M12 19V7"/><path d="M19 19v-5"/><path d="M3 19h18"/></svg>
+        </div>
+        <h3 class="mt-6 text-[17px] font-medium text-ink">Data, Analytics &amp; Intelligence</h3>
+        <p class="mt-1.5 text-[13.5px] text-ink-faint">Turning data into decisions</p>
+        <ul class="mt-5 space-y-2.5">
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Data pipelines &amp; modeling</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Dashboards &amp; BI</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>AI/ML &amp; predictive analytics</li>
+        </ul>
+      </div>
+
+      <div class="card reveal reveal-delay-2">
+        <div class="h-11 w-11 rounded-xl bg-brand-gradient-soft flex items-center justify-center text-brand-magenta">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3 class="mt-6 text-[17px] font-medium text-ink">Platform Implementation &amp; Managed Services</h3>
+        <p class="mt-1.5 text-[13.5px] text-ink-faint">Makes the offering complete</p>
+        <ul class="mt-5 space-y-2.5">
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>End-to-end platform deployment</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Maintenance &amp; support</li>
+          <li class="flex gap-2.5 text-[14.5px] text-ink-soft"><span class="mt-2 h-1 w-1 rounded-full bg-ink-faint shrink-0"></span>Continuous optimization</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Linear flow strip -->
+    <div class="mt-16 reveal">
+      <div class="flex items-center overflow-x-auto no-scrollbar gap-0 py-2">
+        <div class="flex items-center gap-3 shrink-0 pr-8">
+          <span class="h-2 w-2 rounded-full bg-[#2A52E4] shrink-0"></span>
+          <span class="text-[13.5px] whitespace-nowrap text-ink-soft">Device Engineering</span>
+        </div>
+        <span class="h-px w-10 md:w-16 bg-line shrink-0"></span>
+        <div class="flex items-center gap-3 shrink-0 px-8">
+          <span class="h-2 w-2 rounded-full bg-[#653DB2] shrink-0"></span>
+          <span class="text-[13.5px] whitespace-nowrap text-ink-soft">IoT Connectivity</span>
+        </div>
+        <span class="h-px w-10 md:w-16 bg-line shrink-0"></span>
+        <div class="flex items-center gap-3 shrink-0 px-8">
+          <span class="h-2 w-2 rounded-full bg-[#873299] shrink-0"></span>
+          <span class="text-[13.5px] whitespace-nowrap text-ink-soft">Automation &amp; Integration</span>
+        </div>
+        <span class="h-px w-10 md:w-16 bg-line shrink-0"></span>
+        <div class="flex items-center gap-3 shrink-0 px-8">
+          <span class="h-2 w-2 rounded-full bg-[#AD278A] shrink-0"></span>
+          <span class="text-[13.5px] whitespace-nowrap text-ink-soft">Enterprise Systems</span>
+        </div>
+        <span class="h-px w-10 md:w-16 bg-line shrink-0"></span>
+        <div class="flex items-center gap-3 shrink-0 pl-8">
+          <span class="h-2 w-2 rounded-full bg-[#D31C78] shrink-0"></span>
+          <span class="text-[13.5px] whitespace-nowrap text-ink-soft">Data &amp; Intelligence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/SOLUTIONS-->
+<!--INDUSTRIES-->
+<section id="industries" class="py-24 md:py-32 border-t border-line scroll-mt-24 overflow-hidden">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+      <div class="max-w-xl">
+        <p class="eyebrow mb-6">Industries</p>
+        <h2 class="font-light text-[32px] md:text-[38px] leading-[1.15] tracking-tighter2 text-ink">
+          Where legacy meets intelligence.
+        </h2>
+      </div>
+      <div class="hidden sm:flex items-center gap-3">
+        <button id="gallery-prev" type="button" class="gallery-nav-btn" aria-label="Scroll industries left">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="gallery-next" type="button" class="gallery-nav-btn" aria-label="Scroll industries right">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="gallery-track" class="gallery-track no-scrollbar mt-12 md:mt-16 reveal reveal-delay-1">
+
+    <a href="#contact" class="gallery-card">
+      <img src="assets/images/industry-battery.jpg" alt="Rows of industrial batteries in production" loading="lazy" decoding="async" />
+      <div class="gallery-card-scrim"></div>
+      <span class="gallery-card-badge" style="color:#2A52E4">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><rect x="21" y="10" width="1.6" height="4" rx="0.6" fill="currentColor" stroke="none"/><line x1="6" y1="9" x2="6" y2="15"/></svg>
+      </span>
+      <div class="gallery-card-content">
+        <h3>Battery</h3>
+        <p>Thermal risk and cell health, monitored in real time.</p>
+      </div>
+    </a>
+
+    <a href="#contact" class="gallery-card">
+      <img src="assets/images/industry-polymer.jpg" alt="Interior of a plastics manufacturing facility" loading="lazy" decoding="async" />
+      <div class="gallery-card-scrim"></div>
+      <span class="gallery-card-badge" style="color:#4B47C4">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="8" r="2.1"/><circle cx="17" cy="8" r="2.1"/><circle cx="12" cy="17" r="2.1"/><line x1="8.7" y1="9.6" x2="10.5" y2="15"/><line x1="15.3" y1="9.6" x2="13.5" y2="15"/><line x1="9.1" y1="8" x2="14.9" y2="8"/></svg>
+      </span>
+      <div class="gallery-card-content">
+        <h3>Polymer</h3>
+        <p>Consistency across extrusion, molding and curing lines.</p>
+      </div>
+    </a>
+
+    <a href="#contact" class="gallery-card">
+      <img src="assets/images/industry-switches.jpg" alt="Close-up of an electrical switch panel" loading="lazy" decoding="async" />
+      <div class="gallery-card-scrim"></div>
+      <span class="gallery-card-badge" style="color:#7438A6">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><circle cx="8.5" cy="12" r="2.6" fill="currentColor" stroke="none"/></svg>
+      </span>
+      <div class="gallery-card-content">
+        <h3>Electrical Switches</h3>
+        <p>Component-to-unit traceability and quality control.</p>
+      </div>
+    </a>
+
+    <a href="#contact" class="gallery-card">
+      <img src="assets/images/industry-durables.jpg" alt="Automated durable-goods production line" loading="lazy" decoding="async" />
+      <div class="gallery-card-scrim"></div>
+      <span class="gallery-card-badge" style="color:#8B3399">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
+      </span>
+      <div class="gallery-card-content">
+        <h3>Durables</h3>
+        <p>Visibility across high-mix, high-volume production.</p>
+      </div>
+    </a>
+
+    <a href="#contact" class="gallery-card">
+      <img src="assets/images/industry-electronics.jpg" alt="Macro shot of a printed circuit board" loading="lazy" decoding="async" />
+      <div class="gallery-card-scrim"></div>
+      <span class="gallery-card-badge" style="color:#A22993">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l2-5 4 10 4-10 2 5h4"/></svg>
+      </span>
+      <div class="gallery-card-content">
+        <h3>Electronics</h3>
+        <p>Defect detection and component-level tracking at speed.</p>
+      </div>
+    </a>
+
+    <a href="#contact" class="gallery-card">
+      <img src="assets/images/industry-electricals.jpg" alt="Close-up of an electrical breaker panel" loading="lazy" decoding="async" />
+      <div class="gallery-card-scrim"></div>
+      <span class="gallery-card-badge" style="color:#BB2385">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+      </span>
+      <div class="gallery-card-content">
+        <h3>Electricals</h3>
+        <p>Field reliability tracked from install to end of life.</p>
+      </div>
+    </a>
+
+    <a href="#contact" class="gallery-card">
+      <img src="assets/images/industry-home-automation.jpg" alt="Smart home speaker and connected phone app" loading="lazy" decoding="async" />
+      <div class="gallery-card-scrim"></div>
+      <span class="gallery-card-badge" style="color:#D31C78">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/><path d="M9.6 6.4a4.2 4.2 0 0 1 4.8 0"/></svg>
+      </span>
+      <div class="gallery-card-content">
+        <h3>Home Automation</h3>
+        <p>Connected devices that report, learn and adapt.</p>
+      </div>
+    </a>
+
+    <div class="gallery-card gallery-card-more">
+      <div class="gallery-card-content gallery-card-more-content">
+        <p class="eyebrow mb-4">And growing</p>
+        <p>Expanding steadily into adjacent manufacturing sectors as our platform matures.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="gallery-progress-track mt-8"><div id="gallery-progress-fill" class="gallery-progress-fill"></div></div>
+  </div>
+</section>
+<!--/INDUSTRIES-->
+<!--USECASES-->
+<section id="use-cases" class="py-24 md:py-32 bg-surface-alt border-t border-line scroll-mt-24">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="max-w-xl reveal">
+      <p class="eyebrow mb-6">Use Cases</p>
+      <h2 class="font-light text-[32px] md:text-[38px] leading-[1.15] tracking-tighter2 text-ink">
+        Practical scenarios, running today.
+      </h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-2 border-t border-l border-line rounded-[22px] overflow-hidden bg-white">
+      <div class="reveal p-9 border-b border-r border-line flex gap-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-blue shrink-0 mt-0.5"><circle cx="12" cy="13" r="7"/><path d="M12 13l3-3"/><path d="M9 3h6"/></svg>
+        <div>
+          <h3 class="text-[16px] font-medium text-ink">Legacy Machine Monitoring</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-ink-soft">Bring decades-old equipment online without replacing it.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1 p-9 border-b border-r border-line flex gap-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-violet shrink-0 mt-0.5"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="11" cy="18" r="2"/></svg>
+        <div>
+          <h3 class="text-[16px] font-medium text-ink">Production Parameter Capture</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-ink-soft">Capture temperature, speed and output the moment it happens.</p>
+        </div>
+      </div>
+      <div class="reveal p-9 border-b border-r border-line flex gap-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-violet shrink-0 mt-0.5"><circle cx="10" cy="10" r="6"/><line x1="14.5" y1="14.5" x2="20" y2="20"/><path d="M7.3 10.2l1.8 1.8 3-3.4"/></svg>
+        <div>
+          <h3 class="text-[16px] font-medium text-ink">Quality &amp; Traceability</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-ink-soft">Trace every batch and component back to its source.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1 p-9 border-b border-r border-line flex gap-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-magenta shrink-0 mt-0.5"><path d="M4 9a8 8 0 0 1 14-4"/><path d="M20 9V4h-5"/><path d="M20 15a8 8 0 0 1-14 4"/><path d="M4 15v5h5"/></svg>
+        <div>
+          <h3 class="text-[16px] font-medium text-ink">Shop-floor to ERP Integration</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-ink-soft">Sync machine data directly into procurement, inventory and finance.</p>
+        </div>
+      </div>
+      <div class="reveal p-9 border-b border-r border-line flex gap-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-magenta shrink-0 mt-0.5"><path d="M14.7 3.3a3.7 3.7 0 0 1-4.9 4.9L4 14l3 3 5.8-5.8a3.7 3.7 0 0 0 4.9-4.9l-2.7 2.7-2-2 2.7-2.7z"/></svg>
+        <div>
+          <h3 class="text-[16px] font-medium text-ink">Onsite Repair &amp; Maintenance</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-ink-soft">Predict failures and dispatch technicians before downtime hits.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1 p-9 border-b border-r border-line flex gap-5">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-brand-magenta shrink-0 mt-0.5"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg>
+        <div>
+          <h3 class="text-[16px] font-medium text-ink">Exception Alerts</h3>
+          <p class="mt-2 text-[14.5px] leading-relaxed text-ink-soft">Escalate the moment something falls outside normal range.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/USECASES-->
+<!--PLATFORM-->
+<section id="platform" class="py-24 md:py-32 border-t border-line scroll-mt-24">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="max-w-xl reveal">
+      <p class="eyebrow mb-6">Platform</p>
+      <h2 class="font-light text-[32px] md:text-[38px] leading-[1.15] tracking-tighter2 text-ink">
+        One stack, five layers of intelligence.
+      </h2>
+      <p class="mt-6 text-[16px] leading-relaxed text-ink-soft">
+        Every layer has a distinct job. Together, they turn a single signal from the floor into a decision in the business.
+      </p>
+    </div>
+
+    <div class="mt-16 lg:mt-20 platform-story grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+      <div class="platform-story-visual-wrap reveal">
+        <div class="platform-story-visual">
+          <div class="platform-story-panel is-active" data-panel="1">
+            <img src="assets/images/industry-electronics.jpg" alt="Macro shot of a printed circuit board" class="platform-story-photo" loading="lazy" decoding="async" />
+            <div class="platform-story-scrim" style="background:linear-gradient(135deg,rgba(42,82,228,.78),rgba(61,79,214,.42))"></div>
+            <span class="platform-story-live"><i class="pv-node"></i>Live</span>
+            <div class="platform-story-panel-label">
+              <span class="platform-story-num">01</span>
+              <p>Hardware &amp; Firmware</p>
+            </div>
+          </div>
+          <div class="platform-story-panel" data-panel="2">
+            <img src="assets/images/platform-connectivity.jpg" alt="Server room network cabling" class="platform-story-photo" loading="lazy" decoding="async" />
+            <div class="platform-story-scrim" style="background:linear-gradient(135deg,rgba(75,71,196,.78),rgba(94,63,174,.42))"></div>
+            <span class="platform-story-live"><i class="pv-node"></i>Live</span>
+            <div class="platform-story-panel-label">
+              <span class="platform-story-num">02</span>
+              <p>Edge &amp; Connectivity</p>
+            </div>
+          </div>
+          <div class="platform-story-panel" data-panel="3">
+            <img src="assets/images/platform-automation.jpg" alt="Industrial robotic arm mid-operation on a production line" class="platform-story-photo" loading="lazy" decoding="async" />
+            <div class="platform-story-scrim" style="background:linear-gradient(135deg,rgba(116,56,166,.78),rgba(139,51,153,.42))"></div>
+            <span class="platform-story-live"><i class="pv-node"></i>Live</span>
+            <div class="platform-story-panel-label">
+              <span class="platform-story-num">03</span>
+              <p>Automation Engine</p>
+            </div>
+          </div>
+          <div class="platform-story-panel" data-panel="4">
+            <img src="assets/images/opportunity-dashboard.jpg" alt="Engineer reviewing ERP data across multiple monitors" class="platform-story-photo" loading="lazy" decoding="async" style="object-position:50% 20%" />
+            <div class="platform-story-scrim" style="background:linear-gradient(135deg,rgba(162,41,147,.8),rgba(187,35,133,.45))"></div>
+            <span class="platform-story-live"><i class="pv-node"></i>Live</span>
+            <div class="platform-story-panel-label">
+              <span class="platform-story-num">04</span>
+              <p>Enterprise Resource Planning</p>
+            </div>
+          </div>
+          <div class="platform-story-panel" data-panel="5">
+            <img src="assets/images/platform-analytics.jpg" alt="Analytics dashboard with performance charts" class="platform-story-photo" loading="lazy" decoding="async" />
+            <div class="platform-story-scrim" style="background:linear-gradient(135deg,rgba(195,31,127,.78),rgba(211,28,120,.45))"></div>
+            <span class="platform-story-live"><i class="pv-node"></i>Live</span>
+            <div class="platform-story-panel-label">
+              <span class="platform-story-num">05</span>
+              <p>Analytics &amp; Intelligence</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-story-steps">
+        <div class="platform-story-step is-active reveal" data-step="1">
+          <span class="platform-story-step-num">01</span>
+          <h3 class="text-[19px] md:text-[21px] font-medium text-ink">Physical &amp; Control Layer</h3>
+          <p class="mt-1.5 text-[13.5px] text-ink-faint">Hardware (Devices &amp; Machines) · Firmware (Embedded Control)</p>
+          <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Where data is generated and actions originate.</p>
+        </div>
+
+        <div class="platform-story-step reveal reveal-delay-1" data-step="2">
+          <span class="platform-story-step-num">02</span>
+          <h3 class="text-[19px] md:text-[21px] font-medium text-ink">Connectivity Layer</h3>
+          <p class="mt-1.5 text-[13.5px] text-ink-faint">Gateway (Edge &amp; Connectivity)</p>
+          <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Where data is captured, filtered and transmitted.</p>
+        </div>
+
+        <div class="platform-story-step reveal reveal-delay-2" data-step="3">
+          <span class="platform-story-step-num">03</span>
+          <h3 class="text-[19px] md:text-[21px] font-medium text-ink">Orchestration Layer</h3>
+          <p class="mt-1.5 text-[13.5px] text-ink-faint">Automation Engine</p>
+          <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Where workflows are triggered and actions are executed.</p>
+        </div>
+
+        <div class="platform-story-step reveal reveal-delay-3" data-step="4">
+          <span class="platform-story-step-num">04</span>
+          <h3 class="text-[19px] md:text-[21px] font-medium text-ink">Business System Layer</h3>
+          <p class="mt-1.5 text-[13.5px] text-ink-faint">ERP</p>
+          <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Where transactions, processes and records are managed.</p>
+        </div>
+
+        <div class="platform-story-step reveal reveal-delay-4" data-step="5">
+          <span class="platform-story-step-num">05</span>
+          <h3 class="text-[19px] md:text-[21px] font-medium text-ink">Intelligence Layer</h3>
+          <p class="mt-1.5 text-[13.5px] text-ink-faint">Analytics &amp; Intelligence</p>
+          <p class="mt-3 text-[15px] leading-relaxed text-ink-soft">Where insights, predictions and decisions are generated.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Automation Engine in Action -->
+    <div class="mt-24 md:mt-28 reveal">
+      <div class="rounded-[26px] border border-line bg-surface-alt p-8 md:p-14">
+        <p class="eyebrow mb-5">The Automation Engine, in action</p>
+        <h3 class="font-light text-[24px] md:text-[28px] leading-snug tracking-tighter2 text-ink max-w-2xl">
+          Same event, two very different responses.
+        </h3>
+        <p class="mt-4 text-[15px] leading-relaxed text-ink-soft max-w-2xl">
+          A temperature sensor on a telecom tower battery starts climbing. Here's what happens at the device level — and what happens once the automation engine takes over.
+        </p>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl bg-white border border-line p-8">
+            <p class="text-[12.5px] font-medium tracking-[0.06em] uppercase text-ink-faint">Device level · Firmware</p>
+            <ul class="mt-5 space-y-4">
+              <li class="flex gap-3 text-[14.5px] text-ink-soft"><span class="mt-1 text-brand-blue">—</span>Sensor detects rising temperature</li>
+              <li class="flex gap-3 text-[14.5px] text-ink-soft"><span class="mt-1 text-brand-blue">—</span>Firmware turns on the cooling fan</li>
+              <li class="flex gap-3 text-[14.5px] text-ink-soft"><span class="mt-1 text-brand-blue">—</span>Load is reduced automatically</li>
+              <li class="flex gap-3 text-[14.5px] text-ink-soft"><span class="mt-1 text-brand-blue">—</span>An alert signal is sent</li>
+            </ul>
+            <p class="mt-6 text-[13px] leading-relaxed text-ink-faint">Local and instant — but it has no visibility into ERP, technicians or business impact.</p>
+          </div>
+
+          <div class="rounded-2xl bg-ink p-8 text-white">
+            <p class="text-[12.5px] font-medium tracking-[0.06em] uppercase text-white/50">Platform level · Automation Engine</p>
+            <ol class="mt-5 space-y-4">
+              <li class="flex gap-3 text-[14.5px] text-white/85"><span class="text-white/40 font-medium">1</span>Checks severity — critical or non-critical</li>
+              <li class="flex gap-3 text-[14.5px] text-white/85"><span class="text-white/40 font-medium">2</span>Creates a service ticket</li>
+              <li class="flex gap-3 text-[14.5px] text-white/85"><span class="text-white/40 font-medium">3</span>Assigns the nearest technician</li>
+              <li class="flex gap-3 text-[14.5px] text-white/85"><span class="text-white/40 font-medium">4</span>Checks spare battery availability in ERP</li>
+              <li class="flex gap-3 text-[14.5px] text-white/85"><span class="text-white/40 font-medium">5</span>Notifies the operations team</li>
+              <li class="flex gap-3 text-[14.5px] text-white/85"><span class="text-white/40 font-medium">6</span>Escalates if unresolved in two hours</li>
+            </ol>
+            <p class="mt-6 text-[13px] leading-relaxed text-white/50">Cross-system and business-aware — this is automation with consequences that matter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/PLATFORM-->
+<!--RESOURCES-->
+<section id="resources" class="py-24 md:py-32 bg-surface-alt border-t border-line scroll-mt-24">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div class="max-w-xl reveal">
+        <p class="eyebrow mb-6">Resources</p>
+        <h2 class="font-light text-[32px] md:text-[38px] leading-[1.15] tracking-tighter2 text-ink">
+          Thinking, built from the field.
+        </h2>
+      </div>
+      <p class="reveal reveal-delay-1 text-[14.5px] text-ink-faint max-w-xs md:text-right">Our library of articles, case studies and market notes is being prepared.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card reveal">
+        <span class="inline-block rounded-full bg-ink/5 px-3 py-1 text-[11px] font-medium tracking-wide uppercase text-ink-faint">Coming soon</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-6 text-brand-blue"><path d="M6 4h9l3 3v13H6z"/><path d="M14 4v4h4"/><line x1="8.5" y1="12" x2="15.5" y2="12"/><line x1="8.5" y1="15.5" x2="15.5" y2="15.5"/></svg>
+        <h3 class="mt-5 text-[16px] font-medium text-ink">Industry Articles</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink-soft">Perspectives on industrial AI, IoT and automation.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <span class="inline-block rounded-full bg-ink/5 px-3 py-1 text-[11px] font-medium tracking-wide uppercase text-ink-faint">Coming soon</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-6 text-brand-violet"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        <h3 class="mt-5 text-[16px] font-medium text-ink">Case Studies</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink-soft">Real deployments, real operational outcomes.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <span class="inline-block rounded-full bg-ink/5 px-3 py-1 text-[11px] font-medium tracking-wide uppercase text-ink-faint">Coming soon</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-6 text-brand-violet"><path d="M7 3h10v18l-5-3-5 3z"/></svg>
+        <h3 class="mt-5 text-[16px] font-medium text-ink">Brochures</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink-soft">Detailed overviews of our solution areas.</p>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <span class="inline-block rounded-full bg-ink/5 px-3 py-1 text-[11px] font-medium tracking-wide uppercase text-ink-faint">Coming soon</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-6 text-brand-magenta"><path d="M4 19V9l5-4 5 4 6-3v13"/><path d="M9 5v14M14 9v10"/></svg>
+        <h3 class="mt-5 text-[16px] font-medium text-ink">Market Notes</h3>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink-soft">Signals and trends shaping industrial operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/RESOURCES-->
+<!--CONTACT-->
+<section id="contact" class="py-24 md:py-32 border-t border-line scroll-mt-24">
+  <div class="max-w-container mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-14 lg:gap-8">
+      <div class="lg:col-span-5 reveal">
+        <p class="eyebrow mb-6">Contact</p>
+        <h2 class="font-light text-[32px] md:text-[38px] leading-[1.15] tracking-tighter2 text-ink">
+          Let's build your intelligence layer.
+        </h2>
+        <p class="mt-6 text-[16px] leading-relaxed text-ink-soft max-w-md">
+          Tell us about your operations and where visibility is missing. A member of our team will get back to you shortly.
+        </p>
+
+        <div class="mt-10 space-y-6">
+          <div class="flex gap-4">
+            <span class="h-8 w-8 rounded-full bg-brand-gradient-soft flex items-center justify-center text-[13px] font-medium text-brand-blue shrink-0">1</span>
+            <p class="text-[14.5px] leading-relaxed text-ink-soft pt-1">We learn about your operations and existing systems.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="h-8 w-8 rounded-full bg-brand-gradient-soft flex items-center justify-center text-[13px] font-medium text-brand-violet shrink-0">2</span>
+            <p class="text-[14.5px] leading-relaxed text-ink-soft pt-1">We map which layers of the stack matter most for you.</p>
+          </div>
+          <div class="flex gap-4">
+            <span class="h-8 w-8 rounded-full bg-brand-gradient-soft flex items-center justify-center text-[13px] font-medium text-brand-magenta shrink-0">3</span>
+            <p class="text-[14.5px] leading-relaxed text-ink-soft pt-1">We propose a practical, phased path forward.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-line">
+          <p class="text-[13px] text-ink-faint">Prefer email?</p>
+          <a href="mailto:hello@helixislabs.com" class="text-[15px] font-medium text-ink hover:text-brand-blue transition-colors">hello@helixislabs.com</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 lg:col-start-7 reveal reveal-delay-2">
+        <form id="contact-form" class="rounded-[26px] border border-line bg-surface-alt p-8 md:p-10">
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="cf-name" class="text-[13px] font-medium text-ink-soft">Full name</label>
+              <input required id="cf-name" name="name" type="text" placeholder="Jordan Patel" class="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue/40 transition" />
+            </div>
+            <div>
+              <label for="cf-company" class="text-[13px] font-medium text-ink-soft">Company</label>
+              <input id="cf-company" name="company" type="text" placeholder="Company name" class="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue/40 transition" />
+            </div>
+          </div>
+          <div class="mt-5">
+            <label for="cf-email" class="text-[13px] font-medium text-ink-soft">Work email</label>
+            <input required id="cf-email" name="email" type="email" placeholder="you@company.com" class="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue/40 transition" />
+          </div>
+          <div class="mt-5">
+            <label for="cf-message" class="text-[13px] font-medium text-ink-soft">What are you looking to solve?</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell us a little about your operations…" class="mt-2 w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue/40 transition resize-none"></textarea>
+          </div>
+          <button type="submit" id="cf-submit" class="mt-6 w-full sm:w-auto btn-primary">
+            Send message
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p id="cf-success" class="hidden mt-5 flex items-center gap-2 text-[14px] text-ink">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-blue"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
+            Thanks — we'll be in touch shortly.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/CONTACT-->
+</main>
+
+<!--FOOTER-->
+<footer class="border-t border-line bg-surface-alt">
+  <div class="max-w-container mx-auto px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-4">
+        <svg class="h-10 w-auto" viewBox="0 0 272 66" role="img" aria-label="Helixis Labs"><use href="#logo-mark"/></svg>
+        <p class="mt-5 text-[14px] leading-relaxed text-ink-soft max-w-xs">Connecting the physical and digital layers of industrial operations — from devices to decisions.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <a href="#" aria-label="LinkedIn" class="h-9 w-9 rounded-full border border-line flex items-center justify-center text-ink-soft hover:text-ink hover:border-ink/20 transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.7c0-1.36-.02-3.1-1.9-3.1-1.9 0-2.19 1.48-2.19 3v5.8H9z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="md:col-span-2 md:col-start-7">
+        <p class="text-[12.5px] font-medium tracking-wide uppercase text-ink-faint">Company</p>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#about" class="text-[14px] text-ink-soft hover:text-ink transition-colors">About</a></li>
+          <li><a href="#platform" class="text-[14px] text-ink-soft hover:text-ink transition-colors">Platform</a></li>
+          <li><a href="#solutions" class="text-[14px] text-ink-soft hover:text-ink transition-colors">Solutions</a></li>
+          <li><a href="#contact" class="text-[14px] text-ink-soft hover:text-ink transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <p class="text-[12.5px] font-medium tracking-wide uppercase text-ink-faint">Explore</p>
+        <ul class="mt-4 space-y-3">
+          <li><a href="#industries" class="text-[14px] text-ink-soft hover:text-ink transition-colors">Industries</a></li>
+          <li><a href="#use-cases" class="text-[14px] text-ink-soft hover:text-ink transition-colors">Use Cases</a></li>
+          <li><a href="#resources" class="text-[14px] text-ink-soft hover:text-ink transition-colors">Resources</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-2">
+        <p class="text-[12.5px] font-medium tracking-wide uppercase text-ink-faint">Get in touch</p>
+        <ul class="mt-4 space-y-3">
+          <li><a href="mailto:hello@helixislabs.com" class="text-[14px] text-ink-soft hover:text-ink transition-colors">hello@helixislabs.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-14 pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-[13px] text-ink-faint">© 2026 Helixis Labs. All rights reserved.</p>
+      <p class="text-[13px] text-ink-faint">Device Engineering · IoT · Automation · ERP · Analytics</p>
+    </div>
+  </div>
+</footer>
+<!--/FOOTER-->
+
+<script src="script.js"></script>
+</body>
+</html>
