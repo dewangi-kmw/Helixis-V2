@@ -49,6 +49,8 @@
   .sm\:right-auto{right:auto}
 }
 @media (min-width:768px){
+  .md\:h-9{height:2.25rem}
+  .md\:h-11{height:2.75rem}
   .md\:mt-16{margin-top:4rem}
   .md\:mt-20{margin-top:5rem}
   .md\:pb-24{padding-bottom:6rem}
@@ -67,23 +69,38 @@
 /* ---------- hero scroll-fade (JS-driven opacity/transform) ---------- */
 .hero-fade{will-change:opacity,transform}
 
+/* ---------- hero background texture (very subtle, fades away behind the headline) ---------- */
+.hero-bg-texture{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 45%;
+  opacity:.42;filter:saturate(1.05);
+  -webkit-mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.25) 26%,rgba(0,0,0,.75) 48%,#000 66%);
+  mask-image:linear-gradient(100deg,transparent 0%,rgba(0,0,0,.25) 26%,rgba(0,0,0,.75) 48%,#000 66%);
+  pointer-events:none;z-index:0
+}
+@media (max-width:1023px){
+  .hero-bg-texture{opacity:.36;object-position:55% 40%;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.25) 26%,rgba(0,0,0,.7) 55%,#000 78%);
+    mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.25) 26%,rgba(0,0,0,.7) 55%,#000 78%)
+  }
+}
+
 /* ---------- sticky stacking cards ("What We Enable") ---------- */
 .eyebrow-dark{color:rgba(255,255,255,.55)}
 .eyebrow-dark::before{opacity:.9}
-.stack-cards{position:relative;max-width:760px}
-.stack-card{position:sticky;top:calc(84px + var(--stack-i,0) * 16px);z-index:calc(var(--stack-i,0) + 1);padding-bottom:1.1rem}
-.stack-card-inner{position:relative;overflow:hidden;border-radius:24px;min-height:clamp(240px,34vh,320px);padding:2rem;display:flex;flex-direction:column;justify-content:space-between;color:#fff;box-shadow:0 24px 48px -20px rgba(20,20,25,.28),0 8px 16px -8px rgba(20,20,25,.16);transform-origin:center top;will-change:transform,filter;transition:transform .1s linear,filter .1s linear}
+.stack-cards{position:relative;max-width:800px}
+.stack-card{position:sticky;top:calc(80px + var(--stack-i,0) * 36px);z-index:calc(var(--stack-i,0) + 1);padding-bottom:2.25rem}
+.stack-card-inner{position:relative;overflow:hidden;border-radius:26px;min-height:clamp(360px,58vh,500px);padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;color:#fff;box-shadow:0 10px 20px -8px rgba(20,20,25,.18),0 32px 64px -24px rgba(20,20,25,.4);border:1px solid rgba(255,255,255,.08);transform-origin:center top;will-change:transform,filter;transition:transform .16s cubic-bezier(.4,0,.2,1),filter .16s cubic-bezier(.4,0,.2,1)}
 .stack-card-decor{position:absolute;top:-30px;right:-30px;color:#fff;opacity:.14;pointer-events:none}
 .stack-card-content{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;justify-content:space-between}
 .stack-card-num{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);font-weight:500}
-.stack-card-content h3{margin-top:auto;font-size:clamp(21px,2.6vw,30px);font-weight:300;letter-spacing:-0.02em;max-width:560px;line-height:1.18}
-.stack-card-content p{margin-top:10px;max-width:460px;font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.84)}
+.stack-card-content h3{margin-top:auto;font-size:clamp(24px,3vw,34px);font-weight:300;letter-spacing:-0.02em;max-width:560px;line-height:1.18}
+.stack-card-content p{margin-top:12px;max-width:460px;font-size:15px;line-height:1.6;color:rgba(255,255,255,.84)}
 
 @media (max-width:767px){
-  .stack-card{top:72px;padding-bottom:0.85rem}
-  .stack-card-inner{min-height:220px;padding:1.5rem;border-radius:20px}
+  .stack-card{top:calc(68px + var(--stack-i,0) * 22px);padding-bottom:1.5rem}
+  .stack-card-inner{min-height:clamp(300px,48vh,380px);padding:1.75rem;border-radius:22px}
   .stack-card-decor{width:130px;height:130px;top:-20px;right:-20px}
-  .stack-card-content h3{font-size:21px}
+  .stack-card-content h3{font-size:22px}
   .stack-card-content p{font-size:13.5px;margin-top:8px}
 }
 
@@ -105,6 +122,7 @@
 .gallery-card-content p{margin-top:4px;font-size:11.5px;line-height:1.42;color:rgba(255,255,255,.82);max-width:180px}
 .gallery-card-more{background:linear-gradient(160deg,#f7f7f9,#eeeef4);display:flex;align-items:center;box-shadow:none;border:1px solid rgba(230,230,234,1)}
 .gallery-card-more-content{position:static;padding:22px;color:#1d1d1f}
+.gallery-card-more-content .eyebrow{color:#6e6e73}
 .gallery-card-more-content p:last-child{margin-top:0;font-size:13px;line-height:1.55;color:#6e6e73}
 .gallery-nav-btn{height:40px;width:40px;border-radius:9999px;border:1px solid rgba(230,230,234,1);background:#fff;display:flex;align-items:center;justify-content:center;color:#1d1d1f;transition:all .25s cubic-bezier(.4,0,.2,1)}
 .gallery-nav-btn:hover{border-color:rgba(29,29,31,.2);transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(20,20,25,.25)}

@@ -168,11 +168,16 @@
 
   /* ---------- Hero cinematic scroll-fade ---------- */
   var heroFadeEl = document.querySelector("#home .hero-fade");
+  var heroFadeSection = document.getElementById("home");
   if (heroFadeEl && !prefersReducedMotion) {
     var heroFadeTicking = false;
     function updateHeroFade() {
-      var vh = window.innerHeight;
-      var progress = Math.min(Math.max(window.scrollY / (vh * 0.85), 0), 1);
+      /* Use the hero section's own scrolled-past distance rather than a fixed
+         viewport-height fraction — on mobile the stacked layout makes the
+         section much taller than one viewport, so a vh-based ratio finished
+         fading the content out long before it actually scrolled offscreen. */
+      var sectionHeight = heroFadeSection ? heroFadeSection.offsetHeight : window.innerHeight * 0.85;
+      var progress = Math.min(Math.max(window.scrollY / sectionHeight, 0), 1);
       heroFadeEl.style.opacity = String(1 - progress * 0.9);
       heroFadeEl.style.transform = "translateY(" + (progress * 70) + "px) scale(" + (1 - progress * 0.05) + ")";
       heroFadeTicking = false;
@@ -329,10 +334,11 @@
         var curRect = stackCards[i].getBoundingClientRect();
         var nextRect = stackCards[i + 1].getBoundingClientRect();
         var diff = nextRect.top - curRect.top;
-        var range = 180;
+        var range = 260;
         var t = Math.max(0, Math.min(1, 1 - diff / range));
-        inner.style.transform = "scale(" + (1 - t * 0.07) + ")";
-        inner.style.filter = "brightness(" + (1 - t * 0.22) + ")";
+        var eased = t * t * (3 - 2 * t); /* smoothstep, avoids a linear/mechanical feel */
+        inner.style.transform = "translateY(" + (-eased * 14) + "px) scale(" + (1 - eased * 0.1) + ")";
+        inner.style.filter = "brightness(" + (1 - eased * 0.32) + ")";
       }
       stackTicking = false;
     }
